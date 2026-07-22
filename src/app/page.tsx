@@ -1,14 +1,8 @@
 import Link from "next/link";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { TechStackSection } from "@/components/sections/TechStackSection";
 
 const placeholderSections = [
-  {
-    id: "skills",
-    eyebrow: "TECH STACK",
-    title: "기술 스택",
-    description:
-      "실제 프로젝트에서 사용한 기술과 활용 경험을 정리할 자리입니다.",
-  },
   {
     id: "projects",
     eyebrow: "PROJECTS",
@@ -107,6 +101,7 @@ export default function Home() {
       </section>
 
       <AboutSection />
+      <TechStackSection />
 
       <div className="border-t border-border bg-surface/50">
         <div className="page-container grid gap-px py-16 sm:grid-cols-2 sm:py-20 lg:grid-cols-4 lg:py-24">
