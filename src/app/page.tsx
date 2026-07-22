@@ -1,15 +1,9 @@
 import Link from "next/link";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { TechStackSection } from "@/components/sections/TechStackSection";
 
 const placeholderSections = [
-  {
-    id: "projects",
-    eyebrow: "PROJECTS",
-    title: "프로젝트",
-    description:
-      "BuildSync, Medicine-platform, SpecMate, VIA를 소개할 자리입니다.",
-  },
   {
     id: "contact",
     eyebrow: "CONTACT",
@@ -102,6 +96,7 @@ export default function Home() {
 
       <AboutSection />
       <TechStackSection />
+      <ProjectsSection />
 
       <div className="border-t border-border bg-surface/50">
         <div className="page-container grid gap-px py-16 sm:grid-cols-2 sm:py-20 lg:grid-cols-4 lg:py-24">
