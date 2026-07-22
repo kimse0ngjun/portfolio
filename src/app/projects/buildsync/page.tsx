@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ProjectSectionHeading as SectionHeading } from "@/components/project/ProjectSectionHeading";
 
 const technologyGroups = [
   {
@@ -58,35 +59,6 @@ export const metadata: Metadata = {
   title: "BuildSync",
   description: "건설 자재 발주 및 재고 관리 시스템 BuildSync 프로젝트",
 };
-
-function SectionHeading({
-  eyebrow,
-  title,
-  description,
-  id,
-}: {
-  eyebrow: string;
-  title: string;
-  description: string;
-  id: string;
-}) {
-  return (
-    <div className="max-w-2xl">
-      <p className="text-xs font-semibold tracking-[0.16em] text-accent">
-        {eyebrow}
-      </p>
-      <h2
-        id={id}
-        className="mt-3 text-2xl font-bold tracking-[-0.02em] sm:text-3xl"
-      >
-        {title}
-      </h2>
-      <p className="mt-4 text-sm leading-6 text-muted sm:text-base sm:leading-7">
-        {description}
-      </p>
-    </div>
-  );
-}
 
 export default function BuildSyncPage() {
   return (
