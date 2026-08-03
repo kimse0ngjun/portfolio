@@ -71,14 +71,18 @@ type ProjectHeroProps = {
   type: string;
   links?: readonly ProjectLink[];
   linkTitle?: string;
+  linkPlaceholder?: string;
 };
 
-export function ProjectHero({ name, summary, type, links, linkTitle = "GitHub Repository" }: ProjectHeroProps) {
+export function ProjectHero({ name, summary, type, links, linkTitle = "GitHub Repository", linkPlaceholder }: ProjectHeroProps) {
+  const hasUsableLinks = links?.some((link) => isUsableExternalUrl(link.url)) ?? false;
+  const hasLinkPanel = hasUsableLinks || Boolean(linkPlaceholder);
+
   return (
     <header className="border-b border-border">
       <div className="page-container py-14 sm:py-20 lg:py-24">
         <ProjectBackLink compact />
-        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)] lg:items-end lg:gap-16">
+        <div className={`mt-10 grid gap-10 lg:items-end lg:gap-16 ${hasLinkPanel ? "lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)]" : ""}`}>
           <div>
             <div className="flex flex-wrap items-center gap-3">
               <p className="text-xs font-semibold tracking-[0.16em] text-accent">PROJECT DETAIL</p>
@@ -87,7 +91,13 @@ export function ProjectHero({ name, summary, type, links, linkTitle = "GitHub Re
             <h1 className="mt-5 text-4xl font-bold tracking-[-0.04em] sm:text-5xl lg:text-6xl">{name}</h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-muted sm:text-xl">{summary}</p>
           </div>
-          <ProjectLinks title={linkTitle} links={links} />
+          {hasUsableLinks && <ProjectLinks title={linkTitle} links={links} />}
+          {!hasUsableLinks && linkPlaceholder && (
+            <div className="rounded-2xl border border-dashed border-border bg-surface p-5 sm:p-6">
+              <p className="text-sm font-semibold">{linkTitle}</p>
+              <p className="mt-3 text-sm leading-6 text-muted">{linkPlaceholder}</p>
+            </div>
+          )}
         </div>
       </div>
     </header>

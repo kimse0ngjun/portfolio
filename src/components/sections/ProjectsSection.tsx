@@ -27,7 +27,7 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:mt-12 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:mt-12 lg:grid-cols-3 xl:grid-cols-4">
           {projects.map((project, index) => (
             <article
               key={project.name}
