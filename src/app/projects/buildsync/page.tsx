@@ -35,19 +35,42 @@ export default function BuildSyncPage() {
                 <div className="rounded-xl border border-border bg-background p-5"><p className="text-xs font-semibold text-muted">ENTRY POINT</p><p className="mt-2 font-bold">Nginx :80</p></div>
                 <span className="hidden text-muted md:block" aria-hidden="true">→</span>
                 <div className="grid gap-3">
-                  <div className="rounded-xl border border-border bg-background p-4"><p className="text-xs font-semibold text-muted">FRONTEND</p><p className="mt-2 font-bold">React</p></div>
-                  <div className="rounded-xl border border-border bg-background p-4"><p className="text-xs font-semibold text-muted">BACKEND API</p><p className="mt-2 font-bold">Spring Boot :8080</p></div>
+                  <div className="rounded-xl border border-border bg-background p-4"><p className="text-xs font-semibold text-muted">FRONTEND</p><p className="mt-2 font-bold">React · Vite · TypeScript</p></div>
+                  <div className="rounded-xl border border-border bg-background p-4"><p className="text-xs font-semibold text-muted">BACKEND API</p><p className="mt-2 font-bold">Spring Boot :8080</p><p className="mt-2 text-xs text-muted">Spring Security · JWT</p></div>
                 </div>
                 <span className="hidden text-muted md:block" aria-hidden="true">→</span>
                 <div className="rounded-xl border border-border bg-background p-5"><p className="text-xs font-semibold text-muted">DATABASE</p><p className="mt-2 font-bold">MySQL :3306</p></div>
               </div>
-              <p className="mt-5 text-center text-xs leading-5 text-muted">각 서비스는 Docker Compose로 구성되며 MySQL 데이터는 Volume에 저장됩니다.</p>
+              <p className="mt-5 text-center text-xs leading-5 text-muted">AWS EC2에서 Nginx, Frontend, Backend, MySQL을 Docker Compose로 구성하고 MySQL 데이터는 Volume에 저장합니다.</p>
             </div>
           </section>
         )}
 
         <ProjectFeaturesSection id="features-title" description={project.featuresDescription} items={project.features} />
         <ProjectTroubleshootingSection id="troubleshooting-title" description={project.troubleshootingDescription} items={project.troubleshooting} />
+        {project.outcomes && project.outcomes.length > 0 && (
+          <section className="py-16 sm:py-20 lg:py-24" aria-labelledby="outcomes-title">
+            <ProjectSectionHeading
+              eyebrow="OUTCOMES & LEARNINGS"
+              title="결과 및 배운 점"
+              description="BuildSync를 구현하고 통합하며 이해한 기술적 흐름과 협업 경험을 정리했습니다."
+              id="outcomes-title"
+            />
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {project.outcomes.map((outcome, index) => (
+                <li
+                  key={outcome}
+                  className="flex gap-4 rounded-xl border border-border bg-surface p-5 sm:p-6"
+                >
+                  <span className="text-sm font-semibold text-accent" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-sm leading-6">{outcome}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
       <ProjectBackLink />
     </article>
