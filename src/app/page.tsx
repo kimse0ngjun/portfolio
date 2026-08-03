@@ -12,6 +12,24 @@ const placeholderSections = [
   },
 ] as const;
 
+const developmentValues = [
+  {
+    title: "문제의 원인을 먼저 확인합니다",
+    description:
+      "기능이 동작하는 데서 끝내지 않고 오류가 발생한 지점과 원인을 확인합니다. 확인한 원인을 바탕으로 같은 문제가 반복되지 않는 해결 방법을 찾습니다.",
+  },
+  {
+    title: "유지보수 가능한 구조를 고민합니다",
+    description:
+      "중복을 줄이고 역할과 책임을 분리해 변경의 영향을 파악하기 쉬운 구조를 만들고자 합니다. 새로운 기능을 추가할 때 기존 코드를 안전하게 확장할 수 있는지도 함께 살핍니다.",
+  },
+  {
+    title: "협업 가능한 코드를 작성합니다",
+    description:
+      "명확한 이름과 일관된 구조로 다른 사람이 흐름을 이해할 수 있는 코드를 지향합니다. 작업 단위를 나누고 필요한 내용을 문서로 남기는 과정을 중요하게 생각합니다.",
+  },
+] as const;
+
 export default function Home() {
   return (
     <div className="overflow-hidden">
@@ -29,14 +47,16 @@ export default function Home() {
               id="hero-title"
               className="max-w-4xl text-4xl font-bold leading-[1.15] tracking-[-0.035em] sm:text-5xl lg:text-6xl"
             >
-              핵심 소개 문구를
-              <span className="block text-accent">준비하고 있습니다.</span>
+              안녕하세요.
+              <span className="block text-accent">
+                백엔드 개발자 김성준입니다.
+              </span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg">
-              실제 경험과 기술적 판단, 문제 해결 과정을 확인한 뒤 소개 문구로
-              교체할 예정입니다. 현재 내용은 Home 구조 확인을 위한
-              Placeholder입니다.
+              문제의 원인을 살피고 유지보수하기 쉬운 구조를 고민하며
+              성장하고 있습니다. 프로젝트를 통해 인증과 데이터 처리부터 AI
+              서비스 연동과 배포까지 경험했습니다.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -49,17 +69,12 @@ export default function Home() {
                   ↓
                 </span>
               </Link>
-              <button
-                type="button"
-                disabled
-                className="inline-flex min-h-12 cursor-not-allowed items-center justify-center rounded-lg border border-border bg-surface px-5 py-3 text-sm font-semibold text-muted opacity-70"
-                aria-describedby="resume-status"
+              <Link
+                href="#contact"
+                className="inline-flex min-h-12 items-center justify-center rounded-lg border border-border bg-surface px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
               >
-                이력서 준비 중
-              </button>
-              <span id="resume-status" className="sr-only">
-                이력서 PDF가 준비된 후 활성화됩니다.
-              </span>
+                연락하기
+              </Link>
             </div>
           </div>
 
@@ -75,17 +90,17 @@ export default function Home() {
               CORE INTRODUCTION
             </p>
             <h2 id="intro-title" className="mt-3 text-xl font-bold sm:text-2xl">
-              핵심 소개 영역
+              개발 가치관
             </h2>
             <div className="mt-6 space-y-4">
-              {["개발 방향", "주요 경험", "문제 해결 기준"].map((label) => (
+              {developmentValues.map((value) => (
                 <div
-                  key={label}
-                  className="rounded-xl border border-dashed border-border bg-background p-4"
+                  key={value.title}
+                  className="rounded-xl border border-border bg-background p-4"
                 >
-                  <p className="text-sm font-semibold">{label}</p>
+                  <h3 className="text-sm font-semibold">{value.title}</h3>
                   <p className="mt-1.5 text-sm leading-6 text-muted">
-                    TODO · 확인된 자료로 작성 예정
+                    {value.description}
                   </p>
                 </div>
               ))}

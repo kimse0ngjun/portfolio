@@ -1,28 +1,28 @@
 const aboutTopics = [
   {
     number: "01",
-    title: "자기소개",
+    title: "백엔드 개발 경험",
     description:
-      "개발자로서의 관심 분야와 강점을 설명할 자기소개가 들어갈 자리입니다.",
+      "Java와 Spring Boot를 중심으로 백엔드 개발을 학습하고 프로젝트에 적용했습니다. Spring Security와 JWT를 활용한 인증부터 일정·거래처 관리, 월별·현장별 데이터 분석 기능을 구현하며 요청과 데이터의 흐름을 익혔습니다.",
   },
   {
     number: "02",
-    title: "성장 과정",
+    title: "프로젝트 경험",
     description:
-      "개발을 시작한 계기와 학습 과정, 경험의 흐름을 정리할 자리입니다.",
+      "BuildSync에서는 인증과 업무 데이터 처리, 배포를 경험했고 SpecMate와 VIA에서는 검색 구조와 프롬프트 설계, 상담 이력 관리 등 AI 기능을 서비스에 연결했습니다. 서로 다른 기술을 나열하기보다 각 기능에 필요한 저장 방식과 연동 구조를 선택하는 과정을 경험했습니다.",
   },
   {
     number: "03",
-    title: "개발 가치관",
+    title: "성장 과정",
     description:
-      "협업과 문제 해결 과정에서 중요하게 생각하는 기준을 설명할 자리입니다.",
+      "처음에는 기능을 완성하는 데 집중했지만 프로젝트를 거치며 인증, 데이터 구조, 배포 과정에서 발생하는 문제를 직접 마주했습니다. 이후 임시로 동작하게 만드는 것보다 원인을 분석하고 구조를 개선하는 방향으로 접근하며 유지보수성과 협업을 함께 고려하고 있습니다.",
   },
 ] as const;
 
 const statistics = [
-  { label: "프로젝트 경험", value: "—" },
-  { label: "사용 기술", value: "—" },
-  { label: "문제 해결 사례", value: "—" },
+  { label: "대표 프로젝트", value: "3개", description: "Featured Projects" },
+  { label: "주요 분야", value: "Backend", description: "Backend Focus" },
+  { label: "프로젝트 유형", value: "Team", description: "Team Collaboration" },
 ] as const;
 
 export function AboutSection() {
@@ -42,13 +42,13 @@ export function AboutSection() {
               id="about-title"
               className="mt-3 text-3xl font-bold tracking-[-0.025em] sm:text-4xl"
             >
-              경험을 설명할
-              <span className="block text-muted">소개 영역입니다.</span>
+              문제를 이해하고
+              <span className="block text-muted">구조로 해결합니다.</span>
             </h2>
             <p className="mt-5 max-w-xl text-base leading-7 text-muted">
-              확인된 자기소개 자료를 바탕으로 개발 과정과 가치관을 연결해
-              작성할 예정입니다. 현재 문구는 섹션 구조를 확인하기 위한
-              Placeholder입니다.
+              기능 구현에 그치지 않고 문제의 원인과 데이터의 흐름을
+              이해하려고 합니다. 경험을 바탕으로 안정적이고 유지보수하기
+              쉬운 서비스를 만드는 백엔드 개발자로 성장하고자 합니다.
             </p>
           </div>
 
@@ -69,9 +69,6 @@ export function AboutSection() {
                   <p className="mt-2 max-w-2xl text-sm leading-6 text-muted sm:text-base sm:leading-7">
                     {topic.description}
                   </p>
-                  <p className="mt-3 text-xs font-semibold text-muted">
-                    TODO · 실제 자료 확인 후 작성
-                  </p>
                 </div>
               </article>
             ))}
@@ -80,7 +77,7 @@ export function AboutSection() {
 
         <div
           className="mt-12 grid gap-3 sm:grid-cols-3 lg:ml-[calc(35%+2rem)] lg:mt-16"
-          aria-label="주요 통계 Placeholder"
+          aria-label="주요 개발 경험"
         >
           {statistics.map((statistic) => (
             <div
@@ -89,12 +86,14 @@ export function AboutSection() {
             >
               <p
                 className="text-3xl font-bold tracking-tight text-foreground"
-                aria-label="수치 준비 중"
+                aria-label={`${statistic.label} ${statistic.value}`}
               >
                 {statistic.value}
               </p>
               <p className="mt-3 text-sm font-semibold">{statistic.label}</p>
-              <p className="mt-1 text-xs text-muted">TODO · 수치 확인 필요</p>
+              <p className="mt-1 text-xs text-muted">
+                {statistic.description}
+              </p>
             </div>
           ))}
         </div>
