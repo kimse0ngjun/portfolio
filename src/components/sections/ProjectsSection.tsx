@@ -1,34 +1,5 @@
 import Link from "next/link";
-
-const projects = [
-  {
-    name: "BuildSync",
-    slug: "buildsync",
-    description: "건설 자재 발주 및 재고 관리 시스템",
-    type: "Team Project",
-    technologies: ["Spring Boot", "React", "MySQL", "Docker", "AWS"],
-  },
-  {
-    name: "SpecMate",
-    slug: "specmate",
-    description: "AI 기반 PC 견적 추천 서비스",
-    type: "Team Project",
-    technologies: [
-      "Spring Boot",
-      "React",
-      "PostgreSQL",
-      "Qdrant",
-      "OpenAI",
-    ],
-  },
-  {
-    name: "VIA",
-    slug: "via",
-    description: "AI 진로 상담 플랫폼",
-    type: "Team Project",
-    technologies: ["FastAPI", "React", "MongoDB", "OpenAI"],
-  },
-] as const;
+import { projects } from "@/data/projects";
 
 export function ProjectsSection() {
   return (
@@ -87,19 +58,19 @@ export function ProjectsSection() {
                     {project.name}
                   </h3>
                   <span className="shrink-0 rounded-full border border-accent/20 bg-accent/10 px-2.5 py-1 text-xs font-semibold text-accent">
-                    {project.type}
+                    {project.cardType ?? project.type}
                   </span>
                 </div>
 
                 <p className="mt-3 text-sm leading-6 text-muted">
-                  {project.description}
+                  {project.cardDescription}
                 </p>
 
                 <ul
                   className="mt-5 flex flex-wrap gap-2"
                   aria-label={`${project.name} 사용 기술`}
                 >
-                  {project.technologies.map((technology) => (
+                  {project.cardTechnologies.map((technology) => (
                     <li
                       key={technology}
                       className="rounded-md border border-border bg-background px-2.5 py-1.5 text-xs font-medium"
@@ -110,7 +81,7 @@ export function ProjectsSection() {
                 </ul>
 
                 <Link
-                  href={`/projects/${project.slug}`}
+                  href={project.route}
                   className="mt-7 inline-flex min-h-11 items-center justify-center rounded-lg border border-border px-4 py-2.5 text-sm font-semibold transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                   aria-label={`${project.name} 상세 페이지 보기`}
                 >

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const navigationItems = [
   { label: "소개", href: "/#about" },
@@ -12,21 +12,54 @@ const navigationItems = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+
+  const closeMenu = useCallback((restoreFocus = false) => {
+    setIsOpen(false);
+    if (restoreFocus) {
+      requestAnimationFrame(() => triggerRef.current?.focus());
+    }
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
 
+    firstLinkRef.current?.focus();
+
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu(true);
+      }
+    };
+
+    const closeOnPointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (target instanceof Node && !triggerRef.current?.closest("nav")?.contains(target)) {
+        closeMenu();
+      }
     };
 
     window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [isOpen]);
+    window.addEventListener("pointerdown", closeOnPointerDown);
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      window.removeEventListener("pointerdown", closeOnPointerDown);
+    };
+  }, [closeMenu, isOpen]);
 
   return (
-    <nav aria-label="주요 메뉴">
+    <nav
+      aria-label="주요 메뉴"
+      onBlur={(event) => {
+        if (isOpen && !event.currentTarget.contains(event.relatedTarget)) {
+          closeMenu();
+        }
+      }}
+    >
       <button
+        ref={triggerRef}
         type="button"
         className="flex size-11 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-surface md:hidden"
         aria-expanded={isOpen}
@@ -58,12 +91,13 @@ export function Navigation() {
           className="absolute inset-x-0 top-full border-b border-border bg-background p-4 shadow-lg md:hidden"
         >
           <ul className="page-container flex flex-col gap-1">
-            {navigationItems.map((item) => (
+            {navigationItems.map((item, index) => (
               <li key={item.href}>
                 <Link
+                  ref={index === 0 ? firstLinkRef : undefined}
                   href={item.href}
                   className="block rounded-lg px-4 py-3 font-medium text-muted hover:bg-surface hover:text-foreground"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => closeMenu()}
                 >
                   {item.label}
                 </Link>
