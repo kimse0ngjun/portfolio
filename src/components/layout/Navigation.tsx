@@ -14,12 +14,38 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const desktopFirstLinkRef = useRef<HTMLAnchorElement>(null);
 
   const closeMenu = useCallback((restoreFocus = false) => {
     setIsOpen(false);
     if (restoreFocus) {
-      requestAnimationFrame(() => triggerRef.current?.focus());
+      requestAnimationFrame(() => {
+        const trigger = triggerRef.current;
+        if (trigger && trigger.getClientRects().length > 0) {
+          trigger.focus();
+          return;
+        }
+        desktopFirstLinkRef.current?.focus();
+      });
     }
+  }, []);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 768px)");
+
+    const closeMenuAtDesktop = (event: MediaQueryListEvent | MediaQueryList) => {
+      if (!event.matches) return;
+
+      setIsOpen((current) => {
+        if (!current) return current;
+        requestAnimationFrame(() => desktopFirstLinkRef.current?.focus());
+        return false;
+      });
+    };
+
+    closeMenuAtDesktop(desktopQuery);
+    desktopQuery.addEventListener("change", closeMenuAtDesktop);
+    return () => desktopQuery.removeEventListener("change", closeMenuAtDesktop);
   }, []);
 
   useEffect(() => {
@@ -73,9 +99,10 @@ export function Navigation() {
       </button>
 
       <ul className="hidden items-center gap-1 md:flex">
-        {navigationItems.map((item) => (
+        {navigationItems.map((item, index) => (
           <li key={item.href}>
             <Link
+              ref={index === 0 ? desktopFirstLinkRef : undefined}
               href={item.href}
               className="block rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface hover:text-foreground"
             >

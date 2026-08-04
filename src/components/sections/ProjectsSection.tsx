@@ -22,8 +22,8 @@ export function ProjectsSection() {
             </h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-muted sm:text-base sm:leading-7">
-            프로젝트의 목적과 사용 기술을 간략히 소개합니다. 역할과 기여도,
-            문제 해결 과정은 상세 페이지에서 정리할 예정입니다.
+            프로젝트의 목적과 사용 기술을 간략히 소개합니다. 각 프로젝트의
+            담당 기능과 문제 해결 과정은 상세 페이지에서 확인할 수 있습니다.
           </p>
         </div>
 

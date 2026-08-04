@@ -9,8 +9,23 @@ function getCurrentTheme(): Theme {
 }
 
 function subscribeToTheme(callback: () => void) {
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const applySystemTheme = (event: MediaQueryListEvent) => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "light" || storedTheme === "dark") return;
+
+    document.documentElement.classList.toggle("dark", event.matches);
+    document.documentElement.style.colorScheme = event.matches ? "dark" : "light";
+    callback();
+  };
+
   window.addEventListener("portfolio-theme-change", callback);
-  return () => window.removeEventListener("portfolio-theme-change", callback);
+  systemTheme.addEventListener("change", applySystemTheme);
+  return () => {
+    window.removeEventListener("portfolio-theme-change", callback);
+    systemTheme.removeEventListener("change", applySystemTheme);
+  };
 }
 
 export function ThemeToggle() {
