@@ -102,7 +102,7 @@ export const projects = [
     ],
     troubleshootingDescription: "구체적인 문제 상황과 해결 과정을 확인한 뒤 작성할 예정입니다.",
     troubleshooting: [
-      { title: "Trouble Shooting", placeholder: true },
+      { title: "Troubleshooting", placeholder: true },
     ],
   },
   {

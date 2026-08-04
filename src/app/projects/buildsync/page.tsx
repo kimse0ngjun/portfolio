@@ -16,6 +16,8 @@ const project = getProject("buildsync");
 export const metadata: Metadata = {
   title: "BuildSync",
   description: "건설 자재 발주 및 재고 관리 시스템 BuildSync 프로젝트",
+  alternates: { canonical: project.route },
+  openGraph: { title: "BuildSync", description: project.summary, url: project.route },
 };
 
 export default function BuildSyncPage() {

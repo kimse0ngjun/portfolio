@@ -16,6 +16,8 @@ const project = getProject("medicine-platform");
 export const metadata: Metadata = {
   title: "Medicine Platform",
   description: "의약품 리콜 정보를 검색하고 확인할 수 있는 Medicine Platform 프로젝트",
+  alternates: { canonical: project.route },
+  openGraph: { title: "Medicine Platform", description: project.summary, url: project.route },
 };
 
 export default function MedicinePlatformPage() {

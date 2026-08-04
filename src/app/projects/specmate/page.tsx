@@ -13,7 +13,12 @@ import { getProject } from "@/data/projects";
 
 const project = getProject("specmate");
 
-export const metadata: Metadata = { title: "SpecMate", description: "AI 기반 PC 견적 추천 서비스 SpecMate 프로젝트" };
+export const metadata: Metadata = {
+  title: "SpecMate",
+  description: "AI 기반 PC 견적 추천 서비스 SpecMate 프로젝트",
+  alternates: { canonical: project.route },
+  openGraph: { title: "SpecMate", description: project.summary, url: project.route },
+};
 
 export default function SpecMatePage() {
   return (

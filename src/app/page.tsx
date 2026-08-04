@@ -2,15 +2,7 @@ import Link from "next/link";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { TechStackSection } from "@/components/sections/TechStackSection";
-
-const placeholderSections = [
-  {
-    id: "contact",
-    eyebrow: "CONTACT",
-    title: "연락처",
-    description: "확인된 GitHub 주소와 이메일을 연결할 자리입니다.",
-  },
-] as const;
+import { ContactSection } from "@/components/sections/ContactSection";
 
 const developmentValues = [
   {
@@ -112,35 +104,7 @@ export default function Home() {
       <AboutSection />
       <TechStackSection />
       <ProjectsSection />
-
-      <div className="border-t border-border bg-surface/50">
-        <div className="page-container grid gap-px py-16 sm:grid-cols-2 sm:py-20 lg:grid-cols-4 lg:py-24">
-          {placeholderSections.map((section) => (
-            <section
-              key={section.id}
-              id={section.id}
-              className="scroll-mt-24 border-b border-border py-8 first:pt-0 last:border-b-0 sm:border-b-0 sm:px-6 sm:first:pl-0 lg:border-l lg:first:border-l-0 lg:last:pr-0"
-              aria-labelledby={`${section.id}-title`}
-            >
-              <p className="text-xs font-semibold tracking-[0.16em] text-accent">
-                {section.eyebrow}
-              </p>
-              <h2
-                id={`${section.id}-title`}
-                className="mt-3 text-xl font-bold tracking-tight"
-              >
-                {section.title}
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-muted">
-                {section.description}
-              </p>
-              <p className="mt-5 text-xs font-semibold text-muted">
-                TODO · 콘텐츠 준비 중
-              </p>
-            </section>
-          ))}
-        </div>
-      </div>
+      <ContactSection />
     </div>
   );
 }

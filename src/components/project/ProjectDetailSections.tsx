@@ -39,9 +39,8 @@ function ProjectLinks({ title, links }: { title: string; links?: readonly Projec
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-11 items-center justify-between rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-semibold transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
-              aria-label={`${link.label} (새 창에서 열기)`}
             >
-              {link.label} <span aria-hidden="true">↗</span>
+              {link.label} <span className="sr-only">(새 창에서 열림)</span><span aria-hidden="true">↗</span>
             </a>
           ))}
         </div>
@@ -53,9 +52,8 @@ function ProjectLinks({ title, links }: { title: string; links?: readonly Projec
           target="_blank"
           rel="noopener noreferrer"
           className="mt-3 inline-flex text-xs font-semibold text-muted underline-offset-4 hover:text-foreground hover:underline"
-          aria-label={`${link.label} (새 창에서 열기)`}
         >
-          {link.label}<span className="ml-1" aria-hidden="true">↗</span>
+          {link.label}<span className="sr-only">(새 창에서 열림)</span><span className="ml-1" aria-hidden="true">↗</span>
         </a>
       ))}
       {usableLinks.length === 1 && usableLinks[0].description && (
@@ -179,7 +177,7 @@ export function ProjectTroubleshootingSection({ id, description, items }: { id: 
   const placeholdersOnly = items.every((item) => item.placeholder);
   return (
     <section className={sectionClassName} aria-labelledby={id}>
-      <ProjectSectionHeading eyebrow="TROUBLE SHOOTING" title="문제 해결" description={description} id={id} />
+      <ProjectSectionHeading eyebrow="TROUBLESHOOTING" title="문제 해결" description={description} id={id} />
       <div className={`mt-8 ${placeholdersOnly ? "space-y-3" : "space-y-5"}`}>
         {items.map((item, index) => item.placeholder ? (
           <article key={item.title} className="flex items-center gap-4 rounded-xl border border-dashed border-border bg-surface p-5 sm:p-6">

@@ -16,6 +16,8 @@ const project = getProject("via");
 export const metadata: Metadata = {
   title: "VIA",
   description: "학생의 IT 분야 진로 탐색과 면접 준비를 돕는 AI 상담 플랫폼 VIA",
+  alternates: { canonical: project.route },
+  openGraph: { title: "VIA", description: project.summary, url: project.route },
 };
 
 export default function ViaPage() {

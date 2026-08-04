@@ -20,7 +20,7 @@ const aboutTopics = [
 ] as const;
 
 const statistics = [
-  { label: "대표 프로젝트", value: "3개", description: "Featured Projects" },
+  { label: "대표 프로젝트", value: "4개", description: "Featured Projects" },
   { label: "주요 분야", value: "Backend", description: "Backend Focus" },
   { label: "프로젝트 유형", value: "Team", description: "Team Collaboration" },
 ] as const;
