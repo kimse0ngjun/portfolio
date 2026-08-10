@@ -77,8 +77,8 @@ export const projects = [
     overviewItems: [
       { label: "프로젝트 형태", value: "Team Project" },
       { label: "서비스 유형", value: "의약품 리콜 정보 검색" },
-      { label: "의약품 데이터", value: "약 2,848건" },
-      { label: "리콜 배치 데이터", value: "약 23,339건" },
+      { label: "의약품 데이터", value: "자료 확인 중" },
+      { label: "리콜 배치 데이터", value: "자료 확인 중" },
     ],
     contributionDescription: "개인 담당 범위를 확인한 뒤 작성할 예정입니다.",
     contributions: [],

@@ -12,11 +12,13 @@ const navigationItems = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const isOpenRef = useRef(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
   const desktopFirstLinkRef = useRef<HTMLAnchorElement>(null);
 
   const closeMenu = useCallback((restoreFocus = false) => {
+    isOpenRef.current = false;
     setIsOpen(false);
     if (restoreFocus) {
       requestAnimationFrame(() => {
@@ -34,13 +36,11 @@ export function Navigation() {
     const desktopQuery = window.matchMedia("(min-width: 768px)");
 
     const closeMenuAtDesktop = (event: MediaQueryListEvent | MediaQueryList) => {
-      if (!event.matches) return;
+      if (!event.matches || !isOpenRef.current) return;
 
-      setIsOpen((current) => {
-        if (!current) return current;
-        requestAnimationFrame(() => desktopFirstLinkRef.current?.focus());
-        return false;
-      });
+      isOpenRef.current = false;
+      setIsOpen(false);
+      requestAnimationFrame(() => desktopFirstLinkRef.current?.focus());
     };
 
     closeMenuAtDesktop(desktopQuery);
@@ -90,7 +90,11 @@ export function Navigation() {
         className="flex size-11 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-surface md:hidden"
         aria-expanded={isOpen}
         aria-controls="mobile-navigation"
-        onClick={() => setIsOpen((current) => !current)}
+        onClick={() => {
+          const nextIsOpen = !isOpenRef.current;
+          isOpenRef.current = nextIsOpen;
+          setIsOpen(nextIsOpen);
+        }}
       >
         <span className="sr-only">{isOpen ? "메뉴 닫기" : "메뉴 열기"}</span>
         <span aria-hidden="true" className="text-xl leading-none">

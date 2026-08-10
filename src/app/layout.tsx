@@ -43,7 +43,12 @@ export const metadata: Metadata = {
 
 const themeScript = `
   (() => {
-    const storedTheme = localStorage.getItem("theme");
+    let storedTheme = null;
+    try {
+      storedTheme = localStorage.getItem("theme");
+    } catch {
+      storedTheme = null;
+    }
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const theme = storedTheme === "light" || storedTheme === "dark"
       ? storedTheme

@@ -59,7 +59,7 @@ export function TechStackSection() {
           <p className="mt-5 text-base leading-7 text-muted">
             사용 경험이 확인된 기술을 역할에 따라 분류했습니다. 숙련도를
             임의의 수치로 표현하지 않으며, 구체적인 활용 경험은 프로젝트
-            섹션에서 연결할 예정입니다.
+            상세 페이지에서 확인할 수 있습니다.
           </p>
         </div>
 
