@@ -18,6 +18,7 @@ export type ProjectContentItem = {
 export type ProjectTroubleshooting = {
   title: string;
   problem?: string;
+  cause?: string;
   solution?: string;
   results?: readonly string[];
   placeholder?: boolean;

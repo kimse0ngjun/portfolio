@@ -187,8 +187,9 @@ export function ProjectTroubleshootingSection({ id, description, items }: { id: 
           <article key={item.title} className="rounded-2xl border border-border bg-surface p-5 sm:p-7">
             <div className="flex items-start gap-4"><span className="text-sm font-semibold text-accent" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               <div className="min-w-0 flex-1"><h3 className="text-lg font-bold">{item.title}</h3>
-                {(item.problem || item.solution) && <dl className="mt-5 grid gap-5 lg:grid-cols-2">
+                {(item.problem || item.cause || item.solution) && <dl className={`mt-5 grid gap-5 ${item.cause ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
                   {item.problem && <div><dt className="text-xs font-semibold tracking-wide text-muted">PROBLEM</dt><dd className="mt-2 text-sm leading-6">{item.problem}</dd></div>}
+                  {item.cause && <div><dt className="text-xs font-semibold tracking-wide text-muted">CAUSE</dt><dd className="mt-2 text-sm leading-6">{item.cause}</dd></div>}
                   {item.solution && <div><dt className="text-xs font-semibold tracking-wide text-muted">SOLUTION</dt><dd className="mt-2 text-sm leading-6">{item.solution}</dd></div>}
                 </dl>}
                 {item.results && item.results.length > 0 && <div className="mt-5 border-t border-border pt-5"><p className="text-xs font-semibold tracking-wide text-muted">RESULT</p><ul className="mt-3 flex flex-wrap gap-2">{item.results.map((result) => <li key={result} className="rounded-lg border border-accent/20 bg-accent/10 px-3 py-2 text-xs font-semibold text-accent">{result}</li>)}</ul></div>}
