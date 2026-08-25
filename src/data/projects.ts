@@ -146,7 +146,7 @@ export const projects = [
       { title: "Data Crawling", description: "다나와 PC 부품 데이터 수집, 중복 제거, JSON 구조화와 임포트 흐름을 담당했습니다." },
     ],
     stackDescription: "SpecMate의 Backend와 데이터 수집 흐름을 구성하는 기술입니다.",
-    architectureDescription: "Backend가 사용자 요청과 RAG 기반 AI 에이전트를 연결하고, 상품 데이터와 채팅·견적 이력을 관리합니다.",
+    architectureDescription: "Backend가 PostgreSQL의 상품·채팅·견적 데이터와 Qdrant의 벡터 검색 결과를 연결하고, OpenAI Assistant와 Thread를 통해 사용자별 대화 맥락을 관리합니다.",
     featuresDescription: "Backend API와 데이터 저장소에서 확인되는 핵심 기능을 정리했습니다.",
     features: [
       { title: "AI 견적 생성", description: "예산, 용도, 선호 브랜드를 바탕으로 PC 부품 조합을 제안" },
@@ -157,9 +157,9 @@ export const projects = [
     ],
     troubleshootingDescription: "데이터 수집과 AI 연동 과정에서 발생한 문제를 원인과 해결 결과 중심으로 정리했습니다.",
     troubleshooting: [
-      { title: "크롤링 데이터 누락 및 IP 차단", problem: "JavaScript 렌더링으로 실제 판매처 URL이 누락되고, 요청 과다로 특정 시간대에 IP가 차단되었습니다.", solution: "Selenium과 WebDriverWait으로 렌더링 완료 시점을 감지하고, 랜덤 지연·예외 처리·VPN 회전·재시도 로직을 적용했습니다.", results: ["크롤링 실패율 10% → 2%", "전체 수집 시간 2시간 → 1시간 30분", "실제 판매처 링크까지 수집"] },
-      { title: "중복 데이터 및 품질 문제", problem: "옵션별 동일 제품이 중복 수집되어 JSON 크기가 증가하고 제품을 구분할 기준이 부족했습니다.", solution: "제품명과 제조사를 조합한 중복 검사 알고리즘을 추가하고 중복 데이터 필터링과 JSON 정제를 자동화했습니다.", results: ["중복률 0% 달성", "데이터 용량 약 20% 감소", "AI 입력 데이터 품질 개선"] },
-      { title: "GPT 응답 오류 및 세션 맥락 단절", problem: "기존 GPT 호출 구조에서는 DB 연동과 대화 맥락 유지가 어렵고 Prompt의 역할과 출력 형식이 혼재했습니다.", solution: "Spring AI·Qdrant·OpenAI Assistant 기반 RAG 구조와 Thread 세션 관리를 도입하고 Prompt를 System·Role·Output Schema로 분리했습니다.", results: ["GPT 응답 오류율 15% → 2%", "DB 기반 견적 생성 및 자연어 응답", "RAG 챗봇 구조 완성"] },
+      { title: "크롤링 데이터 누락 및 IP 차단", problem: "JavaScript 렌더링으로 실제 판매처 URL이 누락되고, 요청 과다로 특정 시간대에 IP가 차단되었습니다.", solution: "Selenium과 WebDriverWait으로 렌더링 완료 시점을 감지하고 요청 간격 조절, 예외 처리와 재시도 로직을 적용했습니다.", results: ["프로젝트 내부 테스트에서 요청 실패율 약 10% → 2% 이하", "전체 수집 시간 약 2시간 → 1시간 30분", "실제 판매처 링크까지 수집"] },
+      { title: "중복 데이터 및 품질 문제", problem: "옵션별 동일 제품이 중복 수집되어 JSON 크기가 증가하고 제품을 구분할 기준이 부족했습니다.", solution: "제품명과 제조사를 조합한 중복 검사 알고리즘을 추가하고 중복 데이터 필터링과 JSON 정제를 자동화했습니다.", results: ["제품명과 제조사 기준으로 확인된 중복 데이터 제거", "AI 입력 데이터 품질 개선"] },
+      { title: "RAG 구조와 대화 맥락 개선", problem: "기존 GPT 직접 호출 구조에서는 PostgreSQL에 저장된 제품 데이터를 활용하기 어렵고 사용자별 대화 맥락을 유지할 수 없었으며, 프롬프트의 역할과 출력 형식도 혼재했습니다.", solution: "Spring AI와 Qdrant를 연동해 벡터 검색 구조를 구성하고 OpenAI Assistant와 Thread를 연결했습니다. 프롬프트는 시스템 역할·행동 규칙·출력 스키마로 분리했습니다.", results: ["실제 PC 부품 데이터를 참조하는 견적 추천", "사용자별 대화 맥락을 유지하는 RAG 구조", "프로젝트 내부 테스트에서 프롬프트 오류율 약 15% → 2% 이하"] },
     ],
     links: [
       { label: "Backend", url: "https://github.com/spec-mate/backend", variant: "primary" },
