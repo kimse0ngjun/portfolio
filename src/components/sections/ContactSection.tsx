@@ -1,5 +1,6 @@
 const repositories = [
   { label: "BuildSync", url: "https://github.com/kimse0ngjun/BuildSync" },
+  { label: "Medicine Platform", url: "https://github.com/kimse0ngjun/medicine-platform" },
   { label: "SpecMate", url: "https://github.com/spec-mate" },
   { label: "VIA", url: "https://github.com/kimse0ngjun/via" },
 ] as const;
@@ -60,9 +61,6 @@ export function ContactSection() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-xs leading-5 text-muted">
-            Medicine Platform 저장소는 공개 주소가 확인된 뒤 추가합니다.
-          </p>
         </div>
       </div>
     </section>
