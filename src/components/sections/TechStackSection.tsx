@@ -1,6 +1,6 @@
 const techCategories = [
   {
-    name: "Backend",
+    name: "백엔드",
     marker: "BE",
     technologies: [
       "Java",
@@ -13,25 +13,25 @@ const techCategories = [
     layout: "lg:col-span-2",
   },
   {
-    name: "Database",
+    name: "데이터베이스",
     marker: "DB",
     technologies: ["MySQL", "PostgreSQL", "MongoDB", "Qdrant"],
     layout: "lg:col-span-2",
   },
   {
-    name: "Frontend",
+    name: "프런트엔드",
     marker: "FE",
     technologies: ["React", "Next.js", "TypeScript", "JavaScript"],
     layout: "lg:col-span-2",
   },
   {
-    name: "DevOps",
+    name: "인프라",
     marker: "DO",
     technologies: ["Docker", "Docker Compose", "Nginx", "AWS EC2", "AWS RDS"],
     layout: "lg:col-span-3",
   },
   {
-    name: "Tools",
+    name: "도구",
     marker: "TL",
     technologies: ["Git", "GitHub", "Swagger", "Postman"],
     layout: "lg:col-span-3",
@@ -48,7 +48,7 @@ export function TechStackSection() {
       <div className="page-container">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold tracking-[0.16em] text-accent">
-            TECH STACK
+            기술 스택
           </p>
           <h2
             id="tech-stack-title"

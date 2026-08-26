@@ -19,7 +19,7 @@ export function ContactSection() {
         <div>
           <p className="text-xs font-semibold tracking-[0.16em] text-accent">CONTACT</p>
           <h2 id="contact-title" className="mt-3 text-3xl font-bold tracking-[-0.025em] sm:text-4xl">
-            연락하기
+            Contact
           </h2>
           <p className="mt-5 max-w-xl text-base leading-7 text-muted">
             프로젝트와 개발 경험에 관한 연락은 이메일로 확인할 수 있습니다.

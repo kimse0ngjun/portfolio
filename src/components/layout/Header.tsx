@@ -11,7 +11,7 @@ export function Header() {
           className="rounded-md text-base font-bold tracking-tight sm:text-lg"
           aria-label="포트폴리오 홈"
         >
-          Portfolio
+          포트폴리오
         </Link>
 
         <div className="flex items-center gap-1 sm:gap-2">

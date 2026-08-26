@@ -20,9 +20,9 @@ const aboutTopics = [
 ] as const;
 
 const statistics = [
-  { label: "대표 프로젝트", value: "4개", description: "Featured Projects" },
-  { label: "주요 분야", value: "Backend", description: "Backend Focus" },
-  { label: "프로젝트 유형", value: "Team", description: "Team Collaboration" },
+  { label: "대표 프로젝트", value: "4개", description: "주요 프로젝트" },
+  { label: "주요 분야", value: "백엔드", description: "백엔드 중심" },
+  { label: "프로젝트 유형", value: "팀 중심", description: "팀 협업 경험" },
 ] as const;
 
 export function AboutSection() {
@@ -36,7 +36,7 @@ export function AboutSection() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:gap-16">
           <div>
             <p className="text-xs font-semibold tracking-[0.16em] text-accent">
-              ABOUT
+              소개
             </p>
             <h2
               id="about-title"

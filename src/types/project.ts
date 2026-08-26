@@ -33,6 +33,8 @@ export type ProjectOverviewItem = {
 export type ProjectImage = {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 };
 
 export type Project = {
@@ -59,5 +61,6 @@ export type Project = {
   architectureDescription?: string;
   links?: readonly ProjectLink[];
   image?: ProjectImage;
+  screenshots?: readonly ProjectImage[];
   outcomes?: readonly string[];
 };

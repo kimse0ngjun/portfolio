@@ -1,5 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import type { Project } from "@/types/project";
+
+function getProjectImage(project: Project) {
+  return project.image;
+}
 
 export function ProjectsSection() {
   return (
@@ -12,7 +18,7 @@ export function ProjectsSection() {
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold tracking-[0.16em] text-accent">
-              PROJECTS
+              프로젝트
             </p>
             <h2
               id="projects-title"
@@ -28,28 +34,39 @@ export function ProjectsSection() {
         </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:mt-12 lg:grid-cols-3 xl:grid-cols-4">
-          {projects.map((project, index) => (
-            <article
+          {projects.map((project, index) => {
+            const projectImage = getProjectImage(project);
+
+            return (
+              <article
               key={project.name}
               className="group flex min-h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg focus-within:border-accent/60 focus-within:shadow-lg"
             >
-              <div
-                className="relative flex aspect-[16/9] items-center justify-center overflow-hidden border-b border-border bg-background"
-                role="img"
-                aria-label={`${project.name} 프로젝트 이미지 Placeholder`}
-              >
-                <div
-                  className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-35 transition-transform duration-300 group-hover:scale-105"
-                  aria-hidden="true"
-                />
-                <div className="relative flex flex-col items-center gap-3 text-center">
-                  <span className="text-xs font-semibold tracking-[0.16em] text-muted">
-                    PROJECT {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-semibold text-muted">
-                    IMAGE PLACEHOLDER
-                  </span>
-                </div>
+              <div className="relative flex aspect-[16/9] items-center justify-center overflow-hidden border-b border-border bg-background">
+                {projectImage ? (
+                  <Image
+                    src={projectImage.src}
+                    alt={projectImage.alt}
+                    fill
+                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+                    className={`object-cover transition-transform duration-300 group-hover:scale-[1.02] ${project.slug === "buildsync" ? "object-top" : "object-center"}`}
+                  />
+                ) : (
+                  <>
+                    <div
+                      className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-35"
+                      aria-hidden="true"
+                    />
+                    <div className="relative flex flex-col items-center gap-3 text-center" role="img" aria-label={`${project.name} 대표 이미지 준비 중`}>
+                      <span className="text-xs font-semibold tracking-[0.16em] text-muted">
+                        PROJECT {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-semibold text-muted">
+                        이미지 준비 중
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="flex flex-1 flex-col p-5 sm:p-6">
@@ -85,14 +102,15 @@ export function ProjectsSection() {
                   className="mt-7 inline-flex min-h-11 items-center justify-center rounded-lg border border-border px-4 py-2.5 text-sm font-semibold transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                   aria-label={`${project.name} 상세 페이지 보기`}
                 >
-                  View Detail
+                  상세 보기
                   <span className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden="true">
                     →
                   </span>
                 </Link>
               </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

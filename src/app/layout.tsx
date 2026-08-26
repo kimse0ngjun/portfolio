@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   keywords: [
     "김성준",
     "백엔드 개발자",
-    "Backend Developer",
     "Java",
     "Spring Boot",
     "포트폴리오",

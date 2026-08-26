@@ -32,7 +32,7 @@ export default function Home() {
         <div className="grid w-full items-center gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)] lg:gap-16">
           <div>
             <p className="mb-5 inline-flex items-center rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-semibold tracking-[0.16em] text-muted sm:text-sm">
-              BACKEND DEVELOPER · PORTFOLIO
+              백엔드 개발자 · 포트폴리오
             </p>
 
             <h1
@@ -65,7 +65,7 @@ export default function Home() {
                 href="#contact"
                 className="inline-flex min-h-12 items-center justify-center rounded-lg border border-border bg-surface px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
               >
-                연락하기
+                Contact
               </Link>
             </div>
           </div>
@@ -79,7 +79,7 @@ export default function Home() {
               aria-hidden="true"
             />
             <p className="text-xs font-semibold tracking-[0.16em] text-accent">
-              CORE INTRODUCTION
+              핵심 소개
             </p>
             <h2 id="intro-title" className="mt-3 text-xl font-bold sm:text-2xl">
               개발 가치관

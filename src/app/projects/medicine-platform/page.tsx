@@ -4,6 +4,7 @@ import {
   ProjectContributionSection,
   ProjectFeaturesSection,
   ProjectHero,
+  ProjectMediaSection,
   ProjectOverviewSection,
   ProjectTechStackSection,
   ProjectTroubleshootingSection,
@@ -33,6 +34,12 @@ export default function MedicinePlatformPage() {
       />
 
       <div className="page-container divide-y divide-border">
+        <ProjectMediaSection
+          id="medicine-media-title"
+          name={project.name}
+          image={project.image}
+          screenshots={project.screenshots}
+        />
         <ProjectOverviewSection
           id="medicine-overview-title"
           description={project.overviewDescription}
@@ -55,7 +62,7 @@ export default function MedicinePlatformPage() {
             aria-labelledby="medicine-architecture-title"
           >
             <ProjectSectionHeading
-              eyebrow="ARCHITECTURE"
+              eyebrow="구성"
               title="시스템 아키텍처"
               description={project.architectureDescription}
               id="medicine-architecture-title"
@@ -66,12 +73,12 @@ export default function MedicinePlatformPage() {
               aria-label="Medicine Platform 시스템 아키텍처 텍스트 설명"
             >
               <p className="text-center text-xs font-semibold tracking-[0.16em] text-muted">
-                ARCHITECTURE IMAGE PLACEHOLDER
+                아키텍처 이미지 준비 중
               </p>
               <p className="mt-5 text-center font-semibold">
                 사용자 → React → Spring Boot REST API
               </p>
-              <ul className="mt-5 grid gap-3 text-sm sm:grid-cols-3" aria-label="Backend 연동 구성">
+              <ul className="mt-5 grid gap-3 text-sm sm:grid-cols-3" aria-label="백엔드 연동 구성">
                 <li className="rounded-lg border border-border bg-background p-4 text-center">
                   MySQL<br /><span className="text-xs text-muted">리콜 데이터 · 조회 이력</span>
                 </li>
@@ -103,7 +110,7 @@ export default function MedicinePlatformPage() {
             aria-labelledby="medicine-outcomes-title"
           >
             <ProjectSectionHeading
-              eyebrow="OUTCOMES & LEARNINGS"
+              eyebrow="성과와 학습"
               title="결과 및 배운 점"
               description="구현 코드와 수정 이력에서 확인되는 결과와 개발 경험을 정리했습니다."
               id="medicine-outcomes-title"
