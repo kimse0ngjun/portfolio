@@ -38,9 +38,16 @@ export function ContactSection() {
               개인 GitHub <span className="sr-only">(새 창에서 열림)</span><span aria-hidden="true">↗</span>
             </a>
           </div>
-          <div className="mt-4 rounded-lg border border-dashed border-border px-4 py-3 text-sm text-muted" aria-label="이력서 상태">
-            이력서 · 준비 중
-          </div>
+          <a
+            className={`${externalLinkClassName} mt-4`}
+            href="/resume/kim-seongjun-resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            이력서 보기
+            <span className="sr-only">(PDF, 새 창에서 열림)</span>
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
 
         <div className="rounded-2xl border border-border bg-surface p-5 sm:p-7">
