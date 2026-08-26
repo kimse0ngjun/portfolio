@@ -97,7 +97,7 @@ function ProjectLinks({ title, links }: { title: string; links?: readonly Projec
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-flex text-xs font-semibold text-muted underline-offset-4 hover:text-foreground hover:underline"
+          className="mt-3 inline-flex min-h-11 items-center text-xs font-semibold text-muted underline-offset-4 hover:text-foreground hover:underline"
         >
           {link.label}<span className="sr-only">(새 창에서 열림)</span><span className="ml-1" aria-hidden="true">↗</span>
         </a>
