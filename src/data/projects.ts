@@ -93,7 +93,7 @@ export const projects = [
       { label: "의약품 데이터", value: "자료 확인 중" },
       { label: "리콜 배치 데이터", value: "자료 확인 중" },
     ],
-    contributionDescription: "공개 저장소의 README와 커밋 기록을 기준으로 백엔드와 프런트엔드 전반을 구현한 개인 프로젝트입니다.",
+    contributionDescription: "리콜 조회부터 이미지 인식, AI 요약, 인증과 이력 관리까지 백엔드와 프런트엔드 전반을 구현한 개인 프로젝트입니다.",
     contributions: [
       { title: "리콜 검색 및 상세 조회", description: "제품명·LOT 번호·이미지 검색 API와 조회 유형에 맞는 상세 조회 흐름을 구현하고, Spring Data JPA와 MyBatis로 MySQL의 의약품 및 리콜 배치 데이터를 조회했습니다." },
       { title: "OCR 기반 LOT 번호 추출", description: "Tesseract로 이미지 텍스트를 인식하고 공백 정규화와 정규식을 적용해 LOT 표기 및 영문·숫자 조합에서 LOT 번호를 추출했습니다." },
@@ -101,7 +101,7 @@ export const projects = [
       { title: "인증 및 조회 이력 관리", description: "Spring Security와 JWT 인증을 구성하고 제품명·LOT·이미지 조회 이력을 저장·조회·삭제하는 API와 마이페이지를 구현했습니다." },
       { title: "React 화면 및 API 연동", description: "검색 유형별 입력과 결과 화면, 리콜 상세 정보, 사용자 이력 화면을 백엔드 API와 연결하고 이력 목록에 클라이언트 페이지네이션을 적용했습니다." },
     ],
-    stackDescription: "공개 저장소의 현재 구성 파일과 구현 코드에서 확인되는 기술입니다.",
+    stackDescription: "Medicine Platform의 리콜 조회, AI 요약과 이미지 인식 기능을 구성하는 기술입니다.",
     architectureDescription: "React 클라이언트가 JWT와 함께 Spring Boot REST API를 호출하며, 백엔드는 MySQL 조회·이력 저장, Tesseract OCR 처리와 Gemini API 요약 요청을 담당합니다.",
     featuresDescription: "현재 확인된 의약품 리콜 검색 및 이력 관리 기능을 정리했습니다.",
     features: [
@@ -125,7 +125,7 @@ export const projects = [
     outcomes: [
       "제품명·LOT 번호·이미지라는 서로 다른 입력을 하나의 리콜 조회 흐름으로 연결하며 검색 유형별 API와 응답 구조를 설계했습니다.",
       "Tesseract OCR 결과를 정규화하고 정규식으로 LOT 번호를 추출해 데이터베이스 검색으로 연결하는 과정을 구현했습니다.",
-      "리콜 조회 결과를 프롬프트로 구성하고 외부 생성형 AI API 응답을 서비스 화면에 제공하는 연동 흐름을 구현했습니다.",
+      "리콜 조회 결과를 프롬프트로 구성하고 Gemini API 응답을 서비스 화면에 제공하는 연동 흐름을 구현했습니다.",
       "JWT 인증과 조회 이력의 저장·조회·삭제, React 마이페이지를 연결하며 백엔드와 프런트엔드의 데이터 계약을 조정했습니다.",
     ],
   },
@@ -246,7 +246,7 @@ export const projects = [
     troubleshootingDescription: "AI 응답 품질과 프론트엔드 연동, API 비용 관리 과정에서 얻은 경험입니다.",
     troubleshooting: [
       { title: "프롬프트에 따른 응답 품질 편차", problem: "같은 의도의 질문도 표현 방식에 따라 응답의 정확성과 일관성이 달라졌습니다.", solution: "AI 역할과 사용자 정보를 명시하고, 친절하고 전문적인 어조와 간결한 출력 형식 등 응답 가이드라인을 프롬프트에 분리해 지정했습니다." },
-      { title: "FastAPI와 React 연동 실패", problem: "브라우저의 CORS 정책으로 React에서 FastAPI API 호출이 차단되었습니다.", solution: "FastAPI에 CORS Middleware를 적용하고 허용 Origin을 환경별로 분리했습니다." },
+      { title: "FastAPI와 React 연동 실패", problem: "브라우저의 CORS 정책으로 React에서 FastAPI 호출이 차단되었습니다.", solution: "FastAPI에 CORS Middleware를 적용하고 허용 Origin을 환경별로 분리했습니다." },
       { title: "OpenAI API 사용 비용 관리", problem: "정제되지 않은 데이터와 모델 테스트 과정에서 예상보다 많은 API 비용이 발생했습니다.", solution: "실험 전에 입력 데이터를 정제하고 API 사용량과 비용을 함께 확인해야 한다는 운영 기준을 정립했습니다." },
     ],
     links: [

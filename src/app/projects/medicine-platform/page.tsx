@@ -9,6 +9,7 @@ import {
   ProjectTechStackSection,
   ProjectTroubleshootingSection,
 } from "@/components/project/ProjectDetailSections";
+import { ProjectArchitectureImage } from "@/components/project/ProjectArchitectureImage";
 import { ProjectSectionHeading } from "@/components/project/ProjectSectionHeading";
 import { getProject } from "@/data/projects";
 
@@ -67,29 +68,12 @@ export default function MedicinePlatformPage() {
               description={project.architectureDescription}
               id="medicine-architecture-title"
             />
-            <div
-              className="mt-8 rounded-2xl border border-dashed border-border bg-surface p-6 sm:p-8"
-              role="group"
-              aria-label="Medicine Platform 시스템 아키텍처 텍스트 설명"
-            >
-              <p className="text-center text-xs font-semibold tracking-[0.16em] text-muted">
-                아키텍처 이미지 준비 중
-              </p>
-              <p className="mt-5 text-center font-semibold">
-                사용자 → React → Spring Boot REST API
-              </p>
-              <ul className="mt-5 grid gap-3 text-sm sm:grid-cols-3" aria-label="백엔드 연동 구성">
-                <li className="rounded-lg border border-border bg-background p-4 text-center">
-                  MySQL<br /><span className="text-xs text-muted">리콜 데이터 · 조회 이력</span>
-                </li>
-                <li className="rounded-lg border border-border bg-background p-4 text-center">
-                  Tesseract OCR<br /><span className="text-xs text-muted">이미지 텍스트 · LOT 추출</span>
-                </li>
-                <li className="rounded-lg border border-border bg-background p-4 text-center">
-                  Gemini API<br /><span className="text-xs text-muted">리콜 정보 요약</span>
-                </li>
-              </ul>
-            </div>
+            <ProjectArchitectureImage
+              src="/projects/medicine-platform-architecture.png"
+              projectName="Medicine Platform"
+              alt="Medicine Platform의 React 프런트엔드, Spring Boot 백엔드, MySQL 데이터베이스, Gemini API, Tesseract OCR 및 JWT 인증 흐름을 나타낸 시스템 아키텍처"
+              flow="사용자 → React/Vite → Spring Boot REST API → MySQL·Gemini API·Tesseract OCR → 결과 반환"
+            />
           </section>
         )}
 

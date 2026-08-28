@@ -9,6 +9,7 @@ import {
   ProjectTechStackSection,
   ProjectTroubleshootingSection,
 } from "@/components/project/ProjectDetailSections";
+import { ProjectArchitectureImage } from "@/components/project/ProjectArchitectureImage";
 import { ProjectSectionHeading } from "@/components/project/ProjectSectionHeading";
 import { getProject } from "@/data/projects";
 
@@ -34,18 +35,12 @@ export default function ViaPage() {
         {project.architectureDescription && (
           <section className="py-16 sm:py-20 lg:py-24" aria-labelledby="via-architecture-title">
             <ProjectSectionHeading eyebrow="구성" title="시스템 아키텍처" description={project.architectureDescription} id="via-architecture-title" />
-            <div className="mt-8 rounded-2xl border border-border bg-surface p-5 sm:p-8" role="group" aria-label="VIA 시스템 아키텍처">
-              <div className="grid items-center gap-4 text-center lg:grid-cols-[1fr_auto_1.15fr_auto_1fr]">
-                <div className="rounded-xl border border-border bg-background p-5"><p className="text-xs font-semibold text-muted">클라이언트</p><p className="mt-2 font-bold">React</p></div>
-                <span className="hidden text-muted lg:block" aria-hidden="true">→</span>
-                <div className="rounded-xl border border-accent/30 bg-accent/10 p-5"><p className="text-xs font-semibold text-accent">백엔드 API</p><p className="mt-2 font-bold">FastAPI</p><p className="mt-2 text-xs text-muted">인증 · 학생 정보 · 상담 · 이력</p></div>
-                <span className="hidden text-muted lg:block" aria-hidden="true">→</span>
-                <div className="grid gap-3">
-                  <div className="rounded-xl border border-border bg-background p-4"><p className="text-xs font-semibold text-muted">데이터베이스</p><p className="mt-2 font-bold">MongoDB</p></div>
-                  <div className="rounded-xl border border-border bg-background p-4"><p className="text-xs font-semibold text-muted">외부 API</p><p className="mt-2 font-bold">OpenAI · 커리어넷</p></div>
-                </div>
-              </div>
-            </div>
+            <ProjectArchitectureImage
+              src="/projects/via-architecture.png"
+              projectName="VIA"
+              alt="VIA의 React 프런트엔드, FastAPI 백엔드, MongoDB 기반 사용자 정보와 상담 이력, 커리어넷 외부 정보, OpenAI API 및 Docker Compose와 AWS EC2 배포 구성을 나타낸 시스템 아키텍처"
+              flow="사용자 → React/Vite → FastAPI → MongoDB·커리어넷 컨텍스트 → OpenAI API → 응답 저장 및 반환"
+            />
           </section>
         )}
 

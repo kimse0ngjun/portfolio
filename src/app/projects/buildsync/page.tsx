@@ -9,6 +9,7 @@ import {
   ProjectTechStackSection,
   ProjectTroubleshootingSection,
 } from "@/components/project/ProjectDetailSections";
+import { ProjectArchitectureImage } from "@/components/project/ProjectArchitectureImage";
 import { ProjectSectionHeading } from "@/components/project/ProjectSectionHeading";
 import { getProject } from "@/data/projects";
 
@@ -34,19 +35,12 @@ export default function BuildSyncPage() {
         {project.architectureDescription && (
           <section className="py-16 sm:py-20 lg:py-24" aria-labelledby="architecture-title">
             <ProjectSectionHeading eyebrow="구성" title="시스템 아키텍처" description={project.architectureDescription} id="architecture-title" />
-            <div className="mt-8 rounded-2xl border border-border bg-surface p-5 sm:p-8" role="group" aria-label="BuildSync 시스템 아키텍처">
-              <div className="grid items-center gap-4 text-center md:grid-cols-[1fr_auto_1fr_auto_1fr]">
-                <div className="rounded-xl border border-border bg-background p-5"><p className="text-xs font-semibold text-muted">진입점</p><p className="mt-2 font-bold">Nginx :80</p></div>
-                <span className="hidden text-muted md:block" aria-hidden="true">→</span>
-                <div className="grid gap-3">
-                  <div className="rounded-xl border border-border bg-background p-4"><p className="text-xs font-semibold text-muted">프런트엔드</p><p className="mt-2 font-bold">React · Vite · TypeScript</p></div>
-                  <div className="rounded-xl border border-border bg-background p-4"><p className="text-xs font-semibold text-muted">백엔드 API</p><p className="mt-2 font-bold">Spring Boot :8080</p><p className="mt-2 text-xs text-muted">Spring Security · JWT</p></div>
-                </div>
-                <span className="hidden text-muted md:block" aria-hidden="true">→</span>
-                <div className="rounded-xl border border-border bg-background p-5"><p className="text-xs font-semibold text-muted">데이터베이스</p><p className="mt-2 font-bold">MySQL :3306</p></div>
-              </div>
-              <p className="mt-5 text-center text-xs leading-5 text-muted">AWS EC2에서 Nginx, 프런트엔드, 백엔드, MySQL을 Docker Compose로 구성하고 MySQL 데이터는 볼륨에 저장합니다.</p>
-            </div>
+            <ProjectArchitectureImage
+              src="/projects/buildsync-architecture.png"
+              projectName="BuildSync"
+              alt="BuildSync의 React 프런트엔드, Nginx 리버스 프록시, Spring Boot 백엔드, MySQL 데이터베이스와 AWS EC2 및 Docker Compose 배포 구성을 나타낸 시스템 아키텍처"
+              flow="사용자 → React/Vite → Nginx → Spring Boot API → MySQL → 응답 반환"
+            />
           </section>
         )}
 

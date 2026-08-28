@@ -9,6 +9,7 @@ import {
   ProjectTechStackSection,
   ProjectTroubleshootingSection,
 } from "@/components/project/ProjectDetailSections";
+import { ProjectArchitectureImage } from "@/components/project/ProjectArchitectureImage";
 import { ProjectSectionHeading } from "@/components/project/ProjectSectionHeading";
 import { getProject } from "@/data/projects";
 
@@ -34,19 +35,12 @@ export default function SpecMatePage() {
         {project.architectureDescription && (
           <section className="py-16 sm:py-20 lg:py-24" aria-labelledby="specmate-architecture-title">
             <ProjectSectionHeading eyebrow="구성" title="시스템 아키텍처" description={project.architectureDescription} id="specmate-architecture-title" />
-            <div className="mt-8 rounded-2xl border border-border bg-surface p-5 sm:p-8" role="group" aria-label="SpecMate 시스템 및 데이터 흐름">
-              <div className="grid items-center gap-4 text-center lg:grid-cols-[1fr_auto_1.15fr_auto_1fr]">
-                <div className="rounded-xl border border-border bg-background p-5"><p className="text-xs font-semibold text-muted">클라이언트</p><p className="mt-2 font-bold">React</p></div>
-                <span className="hidden text-muted lg:block" aria-hidden="true">→</span>
-                <div className="rounded-xl border border-accent/30 bg-accent/10 p-5"><p className="text-xs font-semibold text-accent">백엔드</p><p className="mt-2 font-bold">Spring Boot API</p><p className="mt-2 text-xs text-muted">인증 · 상품 · 채팅 · 견적</p></div>
-                <span className="hidden text-muted lg:block" aria-hidden="true">→</span>
-                <div className="grid gap-3">
-                  <div className="rounded-xl border border-border bg-background p-4"><p className="text-xs font-semibold text-muted">데이터</p><p className="mt-2 font-bold">PostgreSQL · Redis</p></div>
-                  <div className="rounded-xl border border-border bg-background p-4"><p className="text-xs font-semibold text-muted">AI</p><p className="mt-2 font-bold">Spring AI · OpenAI · Qdrant</p></div>
-                </div>
-              </div>
-              <div className="mt-4 flex flex-col items-center gap-2 rounded-xl border border-dashed border-border bg-background p-4 text-center sm:flex-row sm:justify-center"><span className="text-xs font-semibold text-accent">데이터 처리 흐름</span><span className="hidden text-muted sm:inline" aria-hidden="true">·</span><p className="text-sm text-muted">다나와 크롤러 → 카테고리별 JSON → PC 부품 상품 데이터</p></div>
-            </div>
+            <ProjectArchitectureImage
+              src="/projects/specmate-architecture.png"
+              projectName="SpecMate"
+              alt="SpecMate의 React 프런트엔드, Spring Boot 백엔드, PostgreSQL과 Redis 데이터 계층, Qdrant 벡터 데이터베이스, OpenAI API 및 Docker Compose와 AWS EC2 배포 구성을 나타낸 시스템 아키텍처"
+              flow="사용자 → React/Vite → Nginx → Spring Boot API → PostgreSQL·Redis·Qdrant → OpenAI API → 응답 반환"
+            />
           </section>
         )}
 
