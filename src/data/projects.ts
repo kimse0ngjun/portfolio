@@ -90,8 +90,6 @@ export const projects = [
       { label: "프로젝트 형태", value: "개인 프로젝트" },
       { label: "담당 영역", value: "백엔드 · 프런트엔드" },
       { label: "서비스 유형", value: "의약품 리콜 정보 검색" },
-      { label: "의약품 데이터", value: "자료 확인 중" },
-      { label: "리콜 배치 데이터", value: "자료 확인 중" },
     ],
     contributionDescription: "리콜 조회부터 이미지 인식, AI 요약, 인증과 이력 관리까지 백엔드와 프런트엔드 전반을 구현한 개인 프로젝트입니다.",
     contributions: [
